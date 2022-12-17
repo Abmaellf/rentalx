@@ -1,10 +1,11 @@
 {
-    "name": "RENTALX",
+    "name": "rentalx",
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+        "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+        "typeorm":"ts-node-dev ./node_modules/typeorm/cli"
     },
     "dependencies": {
         "csv-parse": "^5.3.1",
@@ -14,7 +15,7 @@
         "reflect-metadata": "^0.1.13",
         "swagger-ui-express": "^4.5.0",
         "ts-node-dev": "^2.0.0",
-        "typeorm": "0.3.11",
+        "typeorm": "0.3.0",
         "uuid": "^8.3.2"
     },
     "devDependencies": {

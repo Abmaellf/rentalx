@@ -1,7 +1,7 @@
-version: "2.12"
+version: "3.9"
 
 services:
-  database_ignite:
+  database:
     image: postgres
     container_name: database_ignite
     restart: always
@@ -13,7 +13,6 @@ services:
         - POSTGRES_DB=rentx
     volumes:
       - pgdata:/data/postgres
-    network_mode: host
   app:
     build: .
     container_name: rentx
@@ -21,8 +20,7 @@ services:
       - 3333:3333
     volumes:
       - .:/home/abmael/Projetos
-    network_mode: host
-
+    
 volumes:
   pgdata:
     driver: local
