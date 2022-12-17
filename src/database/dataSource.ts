@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { DataSource } from "typeorm";
 
-import { Category } from "../modules/cars/model/Category";
-import { Specification } from "../modules/cars/model/Specification";
+import { Category } from "../modules/cars/entities/Category";
+import { Specification } from "../modules/cars/entities/Specification";
 import { CreateCategories1671248307194 } from "./CreateCategories";
 
 const dataSource = new DataSource({
@@ -21,8 +21,6 @@ const dataSource = new DataSource({
 }
  
 })
-
-
 
 dataSource.initialize()
     .then(() => {
