@@ -1,6 +1,9 @@
+/* eslint-disable spaced-comment */
 import express from "express";
 import swaggerUi from "swagger-ui-express";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import "./database/dataSource";
 import { router } from "./routes";
 import swaggerFile from "./swagger.json";
 // import "./database";

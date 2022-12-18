@@ -2,8 +2,7 @@
 import { DataSource } from "typeorm";
 
 import { Category } from "../modules/cars/entities/Category";
-import { Specification } from "../modules/cars/entities/Specification";
-import { CreateCategories1671248307194 } from "./CreateCategories";
+import { CreateCategories1671248307194 } from "./migrations/CreateCategories";
 
 const dataSource = new DataSource({
   type:"postgres",
@@ -12,7 +11,7 @@ const dataSource = new DataSource({
   username:"docker",
   password: "database_ignite",
   database:"rentx",
-  entities:[Category,Specification],
+  entities:[Category],
   // eslint-disable-next-line spaced-comment
   //migrations:["./src/database/migrations/*.ts"],
   migrations:[CreateCategories1671248307194],
