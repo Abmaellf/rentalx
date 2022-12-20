@@ -18,14 +18,12 @@ const dataSource = new DataSource({
   cli: {
      migrationsDir: "./src/database/migrations/"
 }
- 
 })
 
-dataSource.initialize()
-    .then(() => {
-        console.log("Banco de dados criado")
-    })
-    .catch((error) => console.log(error, "Não criado"))
-    
-export default dataSource;
+
+export function createConnection(
+    host = 'database',
+  ): Promise<DataSource> {
+    return dataSource.setOptions({ host }).initialize();
+  }
 

@@ -8,9 +8,9 @@ services:
     ports:
       - 5432:5432
     environment:
-        - POSTGRES_USER=docker
-        - POSTGRES_PASSWORD=database_ignite
-        - POSTGRES_DB=rentx
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=database_ignite
+      - POSTGRES_DB=rentx
     volumes:
       - pgdata:/data/postgres
   app:
@@ -20,6 +20,11 @@ services:
       - 3333:3333
     volumes:
       - .:/home/abmael/Projetos
+    links: 
+      - database
+    depends_on:
+      - database
+      
     
 volumes:
   pgdata:

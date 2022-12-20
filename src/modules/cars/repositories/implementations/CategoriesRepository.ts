@@ -6,16 +6,12 @@ import {
     ICategoriesRepository,
     ICreateCategoryDTO,
 } from "../ICategoriesRepository";
-// eslint-disable-next-line import/no-unresolved, import/extensions
-
-// eslint-disable-next-line import/no-unresolved, import/extensions
 
 class CategoriesRepository implements ICategoriesRepository {
     private repository: Repository<Category>;
     // eslint-disable-next-line no-use-before-define
-    private static INSTANCE: CategoriesRepository;
 
-    private constructor() {
+    constructor() {
         this.repository = dataSource.getRepository(Category);
     }
 
@@ -37,13 +33,6 @@ class CategoriesRepository implements ICategoriesRepository {
         });
 
         await this.repository.save(category);
-    }
-
-    public static getInstance(): CategoriesRepository {
-        if (!CategoriesRepository.INSTANCE) {
-            CategoriesRepository.INSTANCE = new CategoriesRepository();
-        }
-        return CategoriesRepository.INSTANCE;
     }
 }
 export { CategoriesRepository };

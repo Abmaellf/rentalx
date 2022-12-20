@@ -3,10 +3,11 @@ import express from "express";
 import swaggerUi from "swagger-ui-express";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import "./database/dataSource";
+import { createConnection } from "./database/dataSource";
 import { router } from "./routes";
 import swaggerFile from "./swagger.json";
 // import "./database";
+createConnection();
 
 const app = express();
 
