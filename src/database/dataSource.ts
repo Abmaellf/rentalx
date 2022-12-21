@@ -27,3 +27,4 @@ export function createConnection(
     return dataSource.setOptions({ host }).initialize();
   }
 
+  export default dataSource;
