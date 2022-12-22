@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-        "typeorm":"ts-node-dev ./node_modules/typeorm/cli"
+        "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
     },
     "dependencies": {
         "csv-parse": "^5.3.1",
@@ -15,6 +15,7 @@
         "reflect-metadata": "^0.1.13",
         "swagger-ui-express": "^4.5.0",
         "ts-node-dev": "^2.0.0",
+        "tsyringe": "^4.7.0",
         "typeorm": "0.3.0",
         "uuid": "^8.3.2"
     },

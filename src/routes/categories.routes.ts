@@ -2,20 +2,19 @@ import { Router } from "express";
 import multer from "multer";
 
 // import { v4 as uuidv4 } from "uuid";
-import createCategoryController from "../modules/cars/useCase/createCategory";
+import { CreateCategoryController } from "../modules/cars/useCase/createCategory/CreateCategoryController";
 import { importCategoryController } from "../modules/cars/useCase/importCategory";
 import { listCategoriesController } from "../modules/cars/useCase/listCategories";
 
 const categoriesRoutes = Router();
+
 const upload = multer({
     dest: "./tmp",
 });
 
-categoriesRoutes.post("/", (request, response) => {
-    console.log("Reload funcionando a");
+const createCategoryController = new CreateCategoryController();
 
-    return createCategoryController().handle(request, response);
-});
+categoriesRoutes.post("/", createCategoryController.handle);
 
 categoriesRoutes.get("/", (request, response) => {
     return listCategoriesController.handler(request, response);

@@ -4,9 +4,10 @@ import swaggerUi from "swagger-ui-express";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createConnection } from "./database/dataSource";
+import "./shared/container";
 import { router } from "./routes";
 import swaggerFile from "./swagger.json";
-// import "./database";
+
 createConnection();
 
 const app = express();
