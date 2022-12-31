@@ -1,6 +1,5 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
-
 
 /* eslint-disable prettier/prettier */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -24,9 +23,10 @@ class UsersRepository implements IUsersRepository {
         const user = this.repository.create({
           name, 
           username, 
-          email, 
+          email,
+          password, 
           driver_license, 
-          password
+          
         });
         await this.repository.save(user);
     }

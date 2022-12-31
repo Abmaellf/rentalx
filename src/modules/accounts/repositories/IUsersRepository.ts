@@ -1,8 +1,8 @@
+/* eslint-disable prettier/prettier */
 import { ICreateUserDTO } from "../dto/ICreateUserDTO";
 
 interface IUsersRepository {
-    create(data: ICreateUserDTO): void {
+    create(data: ICreateUserDTO): Promise<void>;
 
-    }
 }
  export { IUsersRepository}

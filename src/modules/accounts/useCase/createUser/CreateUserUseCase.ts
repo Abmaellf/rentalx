@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
-import { inject } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
 import { ICreateUserDTO } from "../../dto/ICreateUserDTO";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
-
+@injectable()
 class CreateUserUseCase {
 
     constructor(
