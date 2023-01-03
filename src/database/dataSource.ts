@@ -4,6 +4,7 @@ import { DataSource } from "typeorm";
 import { User } from "../modules/accounts/entities/User";
 import { Category } from "../modules/cars/entities/Category";
 import { Specification } from "../modules/cars/entities/Specification";
+import { AlterUserDeleteUsername1672703783872 } from "./migrations/AlterUserDeleteUsername";
 import { CreateCategories1671248307194 } from "./migrations/CreateCategories";
 import { CreateSpecifications1671761210649 } from "./migrations/CreateSpecifications";
 import { CreateUsers1671792403636 } from "./migrations/CreateUsers";
@@ -18,7 +19,12 @@ const dataSource = new DataSource({
   entities:[Category, Specification, User],
   // eslint-disable-next-line spaced-comment
   //migrations:["./src/database/migrations/*.ts"],
-  migrations:[CreateCategories1671248307194, CreateSpecifications1671761210649, CreateUsers1671792403636],
+  migrations:[
+              CreateCategories1671248307194, 
+              CreateSpecifications1671761210649, 
+              CreateUsers1671792403636,
+              AlterUserDeleteUsername1672703783872
+            ],
   cli: {
      migrationsDir: "./src/database/migrations/"
 }
