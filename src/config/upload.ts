@@ -3,7 +3,6 @@ import  crypto  from "crypto";
 import multer from "multer";
 import { resolve } from "path";
 
-
 export default {
 
     upload(folder: string) {
@@ -18,9 +17,7 @@ export default {
                   const fileName = `${fileHash}-${file.originalname}`;
 
                   return callback(null, fileName);
-
                 }
-
             }),
         };
     },
