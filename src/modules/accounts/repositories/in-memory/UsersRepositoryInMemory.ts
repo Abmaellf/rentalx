@@ -1,7 +1,5 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable import-helpers/order-imports */
-
-
-
 /* eslint-disable prettier/prettier */
 import { ICreateUserDTO } from "../../dto/ICreateUserDTO";
 
