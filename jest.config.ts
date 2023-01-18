@@ -1,13 +1,9 @@
 /* eslint-disable prettier/prettier */
-/*
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable prettier/prettier */
+import { pathsToModuleNameMapper } from "ts-jest";
 
- * For a detailed explanation regarding each configuration property and type check, visit:
-
- * https://jestjs.io/docs/configuration
-
- */
-
-
+import { compilerOptions } from "./tsconfig.json";
 
 export default {
 
@@ -19,7 +15,7 @@ export default {
 
     // Stop running tests after `n` failures
 
-     bail: true,
+    bail: true,
 
 
 
@@ -179,7 +175,9 @@ export default {
 
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
 
-    // moduleNameMapper: {},
+    moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+        prefix: "<rootDir>/src/",
+    }),
 
 
 
@@ -308,7 +306,7 @@ export default {
 
     // The glob patterns Jest uses to detect test files
 
-     testMatch: ["**/*.spec.ts"],
+    testMatch: ["**/*.spec.ts"],
 
 
 
@@ -366,7 +364,7 @@ export default {
 
     // Indicates whether each individual test should be reported during the run
 
-     verbose: true,
+    verbose: true,
 
 
 
