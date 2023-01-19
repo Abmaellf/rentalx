@@ -7,6 +7,7 @@ import { Specification } from "@modules/cars/infra/typeorm/entities/Specificatio
 
 import { AlterUserAddAvatar1673064449480 } from "./migrations/AlterUserAddAvatar";
 import { AlterUserDeleteUsername1672703783872 } from "./migrations/AlterUserDeleteUsername";
+import { CreateCars1674124518669 } from "./migrations/CreateCars";
 import { CreateCategories1671248307194 } from "./migrations/CreateCategories";
 import { CreateSpecifications1671761210649 } from "./migrations/CreateSpecifications";
 import { CreateUsers1671792403636 } from "./migrations/CreateUsers";
@@ -26,10 +27,11 @@ const dataSource = new DataSource({
               CreateSpecifications1671761210649, 
               CreateUsers1671792403636,
               AlterUserDeleteUsername1672703783872,
-              AlterUserAddAvatar1673064449480
+              AlterUserAddAvatar1673064449480,
+              CreateCars1674124518669
             ],
   cli: {
-     migrationsDir: "./src/database/migrations/"
+     migrationsDir: "./src/shared/infra/typeorm/migrations/"
 }
 })
 
