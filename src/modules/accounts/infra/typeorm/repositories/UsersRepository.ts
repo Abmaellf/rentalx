@@ -6,11 +6,11 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Repository } from "typeorm";
 
-import dataSource from "../../../../database/dataSource";
-import { ICreateUserDTO } from "../../dto/ICreateUserDTO";
-import { User } from "../../entities/User";
-import { IUsersRepository } from "../IUsersRepository";
+import { ICreateUserDTO } from "@modules/accounts/dto/ICreateUserDTO";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+import dataSource from "@shared/infra/typeorm/dataSource";
 
+import { User } from "../entities/User";
 
 class UsersRepository implements IUsersRepository {
 

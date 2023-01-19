@@ -4,12 +4,11 @@ import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { AppError } from "@errors/AppError";
+import { AppError } from "@shared/errors/AppError";
+import { createConnection } from "@shared/infra/typeorm/dataSource";
 
-import { createConnection } from "./database/dataSource";
 import "@shared/container";
 import { router } from "./routes";
-import swaggerFile from "./swagger.json";
 
 createConnection();
 
@@ -17,7 +16,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerUi));
 
 app.use(router);
 app.use(

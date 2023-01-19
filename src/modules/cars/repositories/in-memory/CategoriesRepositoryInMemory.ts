@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Category } from "../../entities/Category";
+import { Category } from "../../infra/typeorm/entities/Category";
 import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
 class CategoriesRepositoyInMemory implements ICategoriesRepository {
