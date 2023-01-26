@@ -13,7 +13,7 @@ class CarsRepository implements ICarsRepository {
    // eslint-disable-next-line no-use-before-define
 
   constructor(){
-    this.repository = dataSource.getRepository(Car)
+   this.repository = dataSource.getRepository(Car)
   }
 
   async create({

@@ -37,10 +37,25 @@ const dataSource = new DataSource({
 })
 
 
-export function createConnection(
+/* 
+  Modificafo para criar o seed:admin
+export default async function createConnection(
     host = 'database',
   ): Promise<DataSource> {
-    return dataSource.setOptions({ host }).initialize();
+    return dataSource.setOptions({ host, }).initialize();
   }
 
-  export default dataSource;
+  //export default dataSource;
+*/
+
+
+// Não modificado
+      export function createConnection(
+        host = 'database',
+      ): Promise<DataSource> {
+        return dataSource.setOptions({ host }).initialize();
+      }
+
+      export default dataSource;
+
+      
