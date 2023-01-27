@@ -7,27 +7,25 @@
 import {hash } from 'bcrypt'
 import { v4 as uuidV4 } from 'uuid';
 
-//import  dataSource  from "@shared/infra/typeorm/dataSource";
-import   createConnection  from "@shared/infra/typeorm/dataSource";
+import  dataSource  from "@shared/infra/typeorm/dataSource";
+//import   createConnection  from "@shared/infra/typeorm/dataSource";
 
 async function create() {
 
-  const conection = await createConnection("localhost");
+  //1 - const conection = await createConnection("localhost");
+  //2 - const conection = await dataSource.createConnection("localhost");
+  const conection = await dataSource.initialize()
 
   const  id = uuidV4();
   const password =  await hash("admin", 8)
 
-  conection.query(
+   conection.query(
     `INSERT INTO USERS (id, name, email, password, "isAdmin", created_at, driver_license)
   values ('${id}', 'admin', 'admin@rentx.com.br', '${password}' , true, 'now()', 'XXXXX' )`
 
   )
 
   await conection.destroy();
-
-
-
-
 // const conection = dataSource.query(
 //   `INSER INTO USERS (id, name, email, password, admin, created_at)
 //   values ('${id}', 'admin', 'admin@rentx.com.br', '${password}', true, ${new Date()} ) `
