@@ -1,4 +1,3 @@
-/* eslint-disable spaced-comment */
 import { Router } from "express";
 
 import { CreateSpecificationController } from "../../../../modules/cars/useCase/createSpecifications/CreateSpecificationController";

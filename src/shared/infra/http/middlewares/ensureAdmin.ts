@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */ /* eslint-disable @typescript-eslint/no-unused-vars */ /* eslint-disable prettier/prettier */
 import { Request, Response, NextFunction } from "express";
 
 import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRepository";

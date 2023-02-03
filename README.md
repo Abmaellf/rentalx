@@ -5,12 +5,12 @@
 
 #Cadastro de carros
   **RF**
-    Deve ser possível cadastrar um novo carro
+    Deve ser possível cadastrar um novo carro - FEITO
    
   **RN**
-    Não deve ser possível cadastrar um carro com uma placa já existente.
-    O carro deve ser cadastrado por padrão, com disponibilidade
-    * O usuário responsável pelo cadastro dever ser um administrador
+    Não deve ser possível cadastrar um carro com uma placa já existente. FEITO
+    O carro deve ser cadastrado por padrão, com disponibilidade FEITO
+    * O usuário responsável pelo cadastro dever ser um administrador FEITO
 
 #Listagem de carro
    
