@@ -19,4 +19,6 @@ interface ICreateCarDTO {
 
     specifications?: Specification[];
 
+    id?: string;
+
 } export { ICreateCarDTO}

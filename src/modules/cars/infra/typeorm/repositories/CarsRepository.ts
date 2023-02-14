@@ -10,7 +10,7 @@ import { Car } from "../entities/Car";
 class CarsRepository implements ICarsRepository {
   
   private repository: Repository<Car>;
-   // eslint-disable-next-line no-use-before-define
+  
 
   constructor(){
    this.repository = dataSource.getRepository(Car)
@@ -25,7 +25,8 @@ class CarsRepository implements ICarsRepository {
     fine_amount, 
     license_plate, 
     name,
-    specifications
+    specifications,
+    id
   }: ICreateCarDTO): Promise<Car> {
     const car =  this.repository.create({
       brand, 
@@ -35,7 +36,8 @@ class CarsRepository implements ICarsRepository {
       fine_amount, 
       license_plate, 
       name,
-      specifications
+      specifications,
+      id
     });
 
     await this.repository.save(car);

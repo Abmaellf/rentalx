@@ -14,7 +14,20 @@ class CarsRepositoryInMemory implements ICarsRepository {
 
      Object.assign(car,
       data
-    );
+      //Na aula 13 - chapter IV - Finalizando CreateCarSpecificationUseCase, a prof. manda adicionar o 
+      //id dentro do parameto do metodo create e também no segundo parametro do assing, 
+      //Mas no meu caso eu estou passando o objeto que é do tipo ICreateCarDTO e já adicionei esse id
+      /** 
+                    brand,
+                    category_id,
+                    daily_rate,
+                    description,
+                    fine_amount,
+                    name,
+                    license_plate,
+                    id,
+                */
+      );
     this.cars.push(car);
     
     return car;
