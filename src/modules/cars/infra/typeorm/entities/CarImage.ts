@@ -5,8 +5,7 @@ import { v4 as uuidV4} from "uuid"
 class CarImage {
 
   @PrimaryColumn()
-  @Column()
-  id: string;
+   id: string;
 
   @Column()
   car_id: string;

@@ -14,6 +14,7 @@ import { CreateSpecifications1671761210649 } from "./migrations/CreateSpecificat
 import { CreateUsers1671792403636 } from "./migrations/CreateUsers";
 import { CreateSpecificationsCars1675826098718 } from "./migrations/CreateSpecificationsCars";
 import { CreateCarImages1676343267301 } from "./migrations/CreateCarImages";
+import { CarImage } from "@modules/cars/infra/typeorm/entities/CarImage";
 
 const dataSource = new DataSource({
   type:"postgres",
@@ -22,7 +23,7 @@ const dataSource = new DataSource({
   username:"docker",
   password: "database_ignite",
   database:"rentx",
-  entities:[Category, Specification, User, Car],
+  entities:[Category, Specification, User, Car, CarImage],
   // eslint-disable-next-line spaced-comment
   //migrations:["./src/database/migrations/*.ts"],
   migrations:[
