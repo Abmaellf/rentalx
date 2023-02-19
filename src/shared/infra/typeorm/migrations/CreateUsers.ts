@@ -1,8 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-
-
 export class CreateUsers1671792403636 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
