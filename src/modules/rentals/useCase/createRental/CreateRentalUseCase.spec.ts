@@ -4,12 +4,14 @@ import { RentalsRepositoryInMemory } from "@modules/rentals/repositories/in-memo
 import { AppError } from "@shared/errors/AppError";
 import { CreateRentalUseCase } from "./CreateRentalUseCase"
 import AdvancedFormat from "dayjs/plugin/advancedFormat"
+import { DayjsDateProvider } from "@shared/container/provider/DateProvider/implementations/DayjsDateProvider";
 
 dayjs.extend(utc);
 dayjs.utc().local().format();
 
 let createRentalUseCase: CreateRentalUseCase;
 let rentalsRepositoryInMemory: RentalsRepositoryInMemory;
+let dayjsDateProvider:DayjsDateProvider;
 
 describe("Create Rental ", ()=>{
   const hoje= dayjs().utc().local().format()
@@ -19,7 +21,10 @@ describe("Create Rental ", ()=>{
   beforeEach(()=>{
 
     rentalsRepositoryInMemory = new RentalsRepositoryInMemory();
-    createRentalUseCase = new CreateRentalUseCase(rentalsRepositoryInMemory);
+    dayjsDateProvider = new DayjsDateProvider();
+    createRentalUseCase = new CreateRentalUseCase(
+        rentalsRepositoryInMemory, 
+        dayjsDateProvider);
   });
 
   it("should be able to create a new rental", async ()=>{
