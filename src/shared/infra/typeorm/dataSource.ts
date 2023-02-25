@@ -61,9 +61,13 @@ export default async function createConnection(
       export function createConnection(
         host = 'database',
       ): Promise<DataSource> {
-        return dataSource.setOptions({ host }).initialize();
+        return dataSource.setOptions({
+             host: process.env.NODE_ENV === "teste" ? "localhost" : host,
+             database:process.env.NODE_ENV === 'test'
+             ? "rentx_test": host
+       }).initialize();
       }
 
       export default dataSource;
-
+ 
       

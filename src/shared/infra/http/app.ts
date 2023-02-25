@@ -8,7 +8,7 @@ import swaggerUi from "swagger-ui-express";
 import { AppError } from "@shared/errors/AppError";
 
 import { createConnection } from "@shared/infra/typeorm/dataSource";
-//Aula 6 criadno seed
+//Aula 6 criado seed
 //import  createConnection  from "@shared/infra/typeorm/dataSource";
 
 import "@shared/container";
