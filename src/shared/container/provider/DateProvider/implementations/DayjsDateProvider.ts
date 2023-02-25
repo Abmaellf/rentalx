@@ -1,6 +1,7 @@
 
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc'
+
 import { IDateProvider } from "../IDateProvider";
 dayjs.extend(utc);
 
@@ -15,9 +16,11 @@ dayjs.extend(utc);
       return dayjs(end_date_utc).diff(dayjs(start_date_utc), 'h')
     }
 
-    convertToUTC(date: Date):string{
+
+    convertToUTC(date: Date):string {
       return dayjs(date).utc().local().format();
     }
+
 
     dateNow():Date {
       return dayjs().toDate();

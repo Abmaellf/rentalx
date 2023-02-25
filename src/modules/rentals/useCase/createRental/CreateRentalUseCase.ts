@@ -1,9 +1,10 @@
 // retired para o provider import  dayjs  from "dayjs";
 // retired para o provider import utc from 'dayjs/plugin/utc'
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
-import { IRentalRepository } from "@modules/rentals/repositories/IRentalRepository";
+import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { IDateProvider } from "@shared/container/provider/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
+import { inject, injectable } from "tsyringe";
 
 // retirado para o provider dayjs.extend(utc);
 
@@ -14,12 +15,14 @@ interface IRequest {
   expected_return_date: Date;
 }
 
+@injectable()
 class CreateRentalUseCase{
-
-  
+ 
 
 constructor(
-  private rentalsRepository: IRentalRepository,
+  @inject("RentalsRepository")
+  private rentalsRepository: IRentalsRepository,
+  @inject("DayjsDateProvider")
   private dateProvider: IDateProvider
   ){}
 
@@ -30,7 +33,7 @@ constructor(
   }:IRequest):Promise<Rental>{
 
     const minimumHours  = 24;
-    //Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo carro
+    //Não deve ser possible cadastrar um novo aluguel caso já exista um aberto para o mesmo carro
     const carUnavailable = await this.rentalsRepository.findOpenRentalByCar(car_id);
 
     if(carUnavailable){
@@ -44,12 +47,12 @@ constructor(
     if(rentalOpenToUser){
       throw new AppError("There's a rental in progress for user!")
     }
-    const  dateNow = this.dateProvider.dateNow();
+   const  dateNow = this.dateProvider.dateNow();
     //O aluguel deve ter duração minima de 24 horas
     
-    //const expectedReturnDateFormat = dayjs(expected_return_date);
-    //No meu exemplo eu não converto o expectedReturnForma, por tanto
-
+   //const expectedReturnDateFormat = dayjs(expected_return_date);
+    //No meu exemplo eu não converto o expectedReturnForma, por tanto não tinha chamado mas vou tentar
+    
     
     // removido const dateNow = this.dateProvider.convertToUTC()
 
@@ -59,7 +62,7 @@ constructor(
       expected_return_date, 
     
     ) // retirado para o provider expectedReturnDateFormat.diff(dayjs(dateNow), 'h')
-   
+   console.log(compare);
     if(compare < minimumHours){
       throw new AppError("Invalid return time! ");
     }
