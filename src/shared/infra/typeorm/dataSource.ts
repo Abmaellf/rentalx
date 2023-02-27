@@ -18,7 +18,7 @@ import { CarImage } from "@modules/cars/infra/typeorm/entities/CarImage";
 import { CreateRentals1676516096845 } from "./migrations/CreateRentals";
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 
-const dataSource = new DataSource({
+export const dataSource = new DataSource({
   type:"postgres",
   host:"localhost",
   port:5432,
@@ -58,16 +58,18 @@ export default async function createConnection(
 
 
 // Não modificado
-      export function createConnection(
-        host = 'database',
-      ): Promise<DataSource> {
-        return dataSource.setOptions({
-             host: process.env.NODE_ENV === "teste" ? "localhost" : host,
-             database:process.env.NODE_ENV === 'test'
-             ? "rentx_test": host
-       }).initialize();
+     // export default 
+     export function createConnection( host = 'database', ): Promise<DataSource> {
+
+        return dataSource
+          .setOptions({
+                        host: process.env.NODE_ENV === "test" ? "localhost" : host,
+                        database: process.env.NODE_ENV === 'test' ? "rentx_test": 
+                        dataSource.options.database as string,
+                    })
+          .initialize();
       }
 
-      export default dataSource;
+      //export default dataSource;
  
       

@@ -1,10 +1,7 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable spaced-comment */
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, import-helpers/order-imports
 import { AppError } from "@shared/errors/AppError";
 
 import { createConnection } from "@shared/infra/typeorm/dataSource";

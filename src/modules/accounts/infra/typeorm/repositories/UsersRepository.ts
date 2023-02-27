@@ -1,14 +1,8 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
-/* eslint-disable prettier/prettier */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Repository } from "typeorm";
 
 import { ICreateUserDTO } from "@modules/accounts/dto/ICreateUserDTO";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
-import dataSource from "@shared/infra/typeorm/dataSource";
+import { dataSource } from "@shared/infra/typeorm/dataSource";
 
 import { User } from "../entities/User";
 

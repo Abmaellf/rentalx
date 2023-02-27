@@ -3,7 +3,7 @@ import { Repository } from "typeorm";
 
 import { ICreateCarDTO } from "@modules/cars/dto/ICreateCarDTO";
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
-import dataSource from "@shared/infra/typeorm/dataSource";
+import { dataSource } from "@shared/infra/typeorm/dataSource";
 
 import { Car } from "../entities/Car";
 

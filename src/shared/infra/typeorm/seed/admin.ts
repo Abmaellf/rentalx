@@ -1,20 +1,14 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable spaced-comment */
-
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable prettier/prettier */
-import {hash } from 'bcrypt'
+import { hash } from 'bcrypt'
 import { v4 as uuidV4 } from 'uuid';
 
-import  dataSource  from "@shared/infra/typeorm/dataSource";
+import  { dataSource }  from "@shared/infra/typeorm/dataSource";
 //import   createConnection  from "@shared/infra/typeorm/dataSource";
 
 async function create() {
 
-  //1 - const conection = await createConnection("localhost");
-  //2 - const conection = await dataSource.createConnection("localhost");
-  const conection = await dataSource.initialize()
+  //1 - const connection = await createConnection("localhost");
+  //2 - const connection = await dataSource.createConnection("localhost");
+  const conection = await dataSource.initialize();
 
   const  id = uuidV4();
   const password =  await hash("admin", 8)
