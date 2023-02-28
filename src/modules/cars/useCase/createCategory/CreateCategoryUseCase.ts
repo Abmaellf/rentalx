@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import {inject, injectable } from "tsyringe"
 
 import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
@@ -23,7 +22,7 @@ class CreateCategoryUseCase {
             throw new AppError("Category Already Exists!");
         }
 
-        this.categoriesRepository.create({ name, description });
+       await this.categoriesRepository.create({ name, description });
     }
 }
 export { CreateCategoryUseCase };
