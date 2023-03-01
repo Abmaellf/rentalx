@@ -3,15 +3,10 @@ import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 
 import { AppError } from "@shared/errors/AppError";
-
-import { createConnection } from "@shared/infra/typeorm/dataSource";
-//Aula 6 criado seed
-//import  createConnection  from "@shared/infra/typeorm/dataSource";
+import "reflect-metadata";
 
 import "@shared/container";
 import { router } from "./routes";
-
-createConnection();
 
 const app = express();
 
