@@ -1,5 +1,6 @@
 // retired para o provider import  dayjs  from "dayjs";
 // retired para o provider import utc from 'dayjs/plugin/utc'
+import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { IDateProvider } from "@shared/container/provider/DateProvider/IDateProvider";
@@ -18,12 +19,13 @@ interface IRequest {
 @injectable()
 class CreateRentalUseCase{
  
-
 constructor(
   @inject("RentalsRepository")
   private rentalsRepository: IRentalsRepository,
   @inject("DayjsDateProvider")
-  private dateProvider: IDateProvider
+  private dateProvider: IDateProvider,
+  @inject("CarsRepository")
+  private carsRepository: ICarsRepository
   ){}
 
   async execute({
@@ -72,7 +74,10 @@ constructor(
       car_id, 
       expected_return_date
     });
-    return rental;
 
+    await this.carsRepository.updateAvaileable(car_id, false);
+    return rental;
   }
+
+
 } export {CreateRentalUseCase };
