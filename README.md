@@ -74,3 +74,5 @@
 
       Caso haja multa deverá ser somado ao total do aluguel.
 
+      O usuárui deve esta logado na aplicação
+

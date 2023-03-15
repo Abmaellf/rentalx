@@ -11,6 +11,7 @@ import { Repository } from "typeorm";
     constructor(){
       this.repository = dataSource.getRepository(Rental)
     }
+   
 
     /*
     async findOpenRentalByCar(car_id: string): Promise<Rental> {
@@ -65,5 +66,12 @@ async findOpenRentalByUser(user_id: string): Promise<Rental> {
       return rental; 
       
     }
+
+
+    async findById(id: string): Promise<Rental> {
+        const rental = await this.repository.findOneBy({id});
+        return rental;
+    }
+    
    }
   export { RentalsRepository}
