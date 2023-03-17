@@ -74,12 +74,36 @@ async findOpenRentalByUser(user_id: string): Promise<Rental> {
         return rental;
     }
 
-
+/*  PRIMEIRA TENTATIVA
     async findByUser(user_id: string): Promise<Rental[]> {
 
       const rentals = await this.repository
       .createQueryBuilder("r")
-      .where("r.user_id = :user_id", { user_id}).getMany()
+      .where("r.user_id = :user_id", { user_id})
+      .relation["car"].getMany()
+      return rentals;
+      
+    }  */
+
+      /*  SEGUNDA TENTATIVA
+    async findByUser(user_id: string): Promise<Rental[]> {
+
+      const rentals = await this.repository
+      .createQueryBuilder("r")
+      .leftJoinAndSelect("r.user_id", user_id)
+      .getMany()
+      return rentals;
+      
+    } 
+*/
+
+  
+    async findByUser(user_id: string): Promise<Rental[]> {
+
+      const rentals = await this.repository.find({
+        where: {user_id},
+        relations: ["car"]
+      })
       return rentals;
       
     }  
