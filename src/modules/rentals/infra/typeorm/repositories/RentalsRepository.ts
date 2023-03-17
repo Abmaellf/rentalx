@@ -31,8 +31,6 @@ async findOpenRentalByCar(car_id: string): Promise<Rental> {
 
   return rental;  
 }
-
-
 /*
     async findOpenRentalByUser(user_id: string): Promise<Rental> {
       const openByUser = await this.repository.findOneBy({ user_id})
@@ -75,6 +73,16 @@ async findOpenRentalByUser(user_id: string): Promise<Rental> {
         const rental = await this.repository.findOneBy({id});
         return rental;
     }
+
+
+    async findByUser(user_id: string): Promise<Rental[]> {
+
+      const rentals = await this.repository
+      .createQueryBuilder("r")
+      .where("r.user_id = :user_id", { user_id}).getMany()
+      return rentals;
+      
+    }  
     
    }
   export { RentalsRepository}

@@ -76,3 +76,12 @@
 
       O usuárui deve esta logado na aplicação
 
+
+      # LISTAGEM DE ALUGUEIS PARA USUARIO #
+
+      ****  RF ****
+
+      Deve saer possível realizar a busca de todos os alugueis para os usuarios
+
+     **** RN ****
+      O usuario deve esta logado na aplicação

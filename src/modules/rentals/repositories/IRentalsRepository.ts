@@ -9,5 +9,7 @@ interface IRentalsRepository {
   create(data:ICreateRentalDTO): Promise<Rental>;
   
   findById(id: string ): Promise<Rental>;
+
+  findByUser(user_id: string): Promise<Rental[]>;
 }
 export { IRentalsRepository };
