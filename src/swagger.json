@@ -1,13 +1,14 @@
 {
-    "openapi": "3.0.0",
+    "openapi": "3.0.3",
     "info": {
-        "description": "RentalX Documentation",
-        "version": "1.0.0",
-        "contact": {
-            "email": "abmael_ninha@gmail.com"
-        }
+                "description": "RentalX Documentation",
+                "version": "1.0.0",
+                "contact": {
+                        "email": "abmael_ninha@gmail.com"
+                }
     },
-    "paths": {
+
+     "paths": {
         "/categories": {
             "post": {
                 "tags": [
@@ -15,6 +16,9 @@
                 ],
                 "summary": "Create a category",
                 "description": "Create a new category",
+                "security":[
+                    {"bearerAuth": []}
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -28,7 +32,7 @@
                                         "type": "string"
                                     }
                                 },
-                                "exemple": {
+                                "example": {
                                     "name": "category name sample",
                                     "description": "Category description sample"
                                 }
@@ -130,10 +134,43 @@
                     }
                 } 
          }
+        },
+        "/sessions": {
+            "post":{
+                "tags":["Sessions"],
+                "summary":"Authentication user",
+                "description": "Authentication user",
+                "requestBody":{
+                     "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                        "email": {
+                                            "type":"string"
+                                        },
+                                         "password":{
+                                            "type":"string"
+                                        }
+
+                                }
+                            }
+                        }
+                }
+             },
+             "responses": {
+                "200":{
+                    "description":"Success"
+                },
+                "400":{
+                    "description":"Email or password incorrect !"
+                }
+            }
         }
-   },
+      }
+    },
    
-    "definitions":{
+     "definitions":{
         "Specifications":{
             "type":"object",
             "properties":{
@@ -146,5 +183,14 @@
             }         
             
         }
-    }  
-}
+     },
+     "components":{
+        "securitySchemes":{
+            "bearerAuth":{
+                  "type":"http",
+                 "scheme": "bearer",
+                 "bearerFormat":"JWT"
+                }
+            }
+        }
+   }

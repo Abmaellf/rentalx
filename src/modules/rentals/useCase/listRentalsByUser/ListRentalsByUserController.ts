@@ -10,8 +10,8 @@ class ListRentalsByUserController {
     
     const listRentalsByUserUseCase = container.resolve(ListRentalsByUserUseCase)
 
-    const reltals = await listRentalsByUserUseCase.execute(id);
-    return response.json(reltals);
+    const rentals = await listRentalsByUserUseCase.execute(id);
+    return response.json(rentals);
   }
 }
 export {ListRentalsByUserController}
