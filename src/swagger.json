@@ -85,7 +85,9 @@
                 "tags":["Category"],
                 "summary":"Upload new Category",
                 "description":"Upload a new Category",
-
+                "security":[
+                    {"bearerAuth": []}
+                ],
                 "requestBody":{
                     "content":{
                         "multipart/form-data":{
@@ -115,6 +117,9 @@
                 "tags":["Specifications"],
                 "summary":"Create a Specifications",
                 "description":"Create a new specifications",
+                "security":[
+                    {"bearerAuth": []}
+                ],
                 "requestBody":{
                         "content":{
                             "application/json":{
@@ -167,7 +172,34 @@
                 }
             }
         }
-      }
+      },
+     "/cars":{
+        "post":{
+            "tags":["Cars"],
+            "summary":"Create a new Car",
+            "description":"Create a new Car",
+            "security":[
+                {"bearerAuth": []}
+            ],
+            "requestBody":{
+                "content":{
+                    "application/json":{
+                        "schema":{
+                            "$ref":"#/definitions/Car"
+                        }
+                }
+            }
+        },
+        "responses":{
+            "201":{
+                "description":"Created"
+            },
+            "400":{
+                "description":"Car Already Exists"
+            }
+         }
+       }
+     }
     },
    
      "definitions":{
@@ -182,6 +214,33 @@
                 }
             }         
             
+        },
+
+        "Car":{
+            "type":"object",
+            "properties":{
+                "name":{
+                    "type":"string"
+                },
+                "description":{
+                    "type":"string"
+                },
+                "daily_rate":{
+                    "type":"number"
+                },
+                "license_plate":{
+                    "type":"string"
+                },
+                "fine_amount":{
+                    "type":"number"
+                },
+                "brand":{
+                    "type":"string"
+                },
+                "category_id":{
+                    "type":"string"
+                }
+            }
         }
      },
      "components":{
