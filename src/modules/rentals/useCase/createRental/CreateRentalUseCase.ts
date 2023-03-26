@@ -39,7 +39,7 @@ constructor(
     const carUnavailable = await this.rentalsRepository.findOpenRentalByCar(car_id);
 
     if(carUnavailable){
-      throw new AppError("Car is unavailable")
+      throw new AppError("Car is not available")
     }
 
     
@@ -64,9 +64,9 @@ constructor(
       expected_return_date, 
     
     ) // retirado para o provider expectedReturnDateFormat.diff(dayjs(dateNow), 'h')
-   console.log(compare);
+   //console.log(compare);
     if(compare < minimumHours){
-      throw new AppError("Invalid return time! ");
+      throw new AppError("Invalid return time!");
     }
 
    const rental = await this.rentalsRepository.create({

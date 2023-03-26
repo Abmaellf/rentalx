@@ -56,7 +56,6 @@ export default async function createConnection(
   //export default dataSource;
 */
 
-
 // Não modificado
      // export default 
      export function createConnection( host = 'database', ): Promise<DataSource> {
