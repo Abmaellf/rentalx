@@ -17,6 +17,7 @@ import { CreateCarImages1676343267301 } from "./migrations/CreateCarImages";
 import { CarImage } from "@modules/cars/infra/typeorm/entities/CarImage";
 import { CreateRentals1676516096845 } from "./migrations/CreateRentals";
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
+import { CreateUsersToken1679858798792 } from "./migrations/CreateUsersToken";
 
 export const dataSource = new DataSource({
   type:"postgres",
@@ -37,7 +38,8 @@ export const dataSource = new DataSource({
               CreateCars1674689238520,
               CreateSpecificationsCars1675826098718,
               CreateCarImages1676343267301,
-              CreateRentals1676516096845
+              CreateRentals1676516096845,
+              CreateUsersToken1679858798792
             ],
   cli: {
      migrationsDir: "./src/shared/infra/typeorm/migrations/"
