@@ -6,6 +6,6 @@ import { UserTokens } from "../infra/typeorm/entities/UserTokens"
       expires_date,
       refresh_token,
       user_id
-    }: ICreateUserTokenDTO): Promise<UserTokens>;
+    }: ICreateUserTokenDTO): Promise<void>;
   }
   export { IUsersTokensRepository}

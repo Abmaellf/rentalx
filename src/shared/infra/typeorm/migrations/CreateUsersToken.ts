@@ -25,7 +25,7 @@ export class CreateUsersToken1679858798792 implements MigrationInterface {
                         type:"timestamp"
                     },
                     {
-                        name:"creted_at",
+                        name:"created_at",
                         type:"timestamp",
                         default:"now()"
                     },

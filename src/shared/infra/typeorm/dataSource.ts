@@ -18,6 +18,7 @@ import { CarImage } from "@modules/cars/infra/typeorm/entities/CarImage";
 import { CreateRentals1676516096845 } from "./migrations/CreateRentals";
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { CreateUsersToken1679858798792 } from "./migrations/CreateUsersToken";
+import { UserTokens } from "@modules/accounts/infra/typeorm/entities/UserTokens";
 
 export const dataSource = new DataSource({
   type:"postgres",
@@ -26,7 +27,7 @@ export const dataSource = new DataSource({
   username:"docker",
   password: "database_ignite",
   database:"rentx",
-  entities:[Category, Specification, User, Car, CarImage, Rental],
+  entities:[Category, Specification, User, Car, CarImage, Rental, UserTokens],
   // eslint-disable-next-line spaced-comment
   //migrations:["./src/database/migrations/*.ts"],
   migrations:[
