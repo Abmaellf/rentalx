@@ -75,13 +75,6 @@ class AuthenticateUserUseCase {
         expires_refresh_token_days
       );
 
-      //  const res = await this.usersTokensRepository.create({
-      //   expires_date: refresh_token_expires_date,
-      //   refresh_token,
-      //   user_id: user.id       
-        
-      // })
-     
 
        await this.usersTokensRepository.create({
         expires_date: refresh_token_expires_date,
@@ -89,18 +82,7 @@ class AuthenticateUserUseCase {
         user_id: user.id       
         
       })
-
-      //Esse código estava anteriomente como retorno do metodo execute, foi trocado par o tokenReturn
-      // return {
-      //   user,
-      //   token,
-      //   refresh_token
-      // }
-
-      // Gerar jsonwebtoken
-
-      // O codigo abaixo é novo não sei onde foi feito essa aula, mais esta no codigo da Dani
-          
+  
       const tokenReturn: IResponse = {
         token,
         user: {
