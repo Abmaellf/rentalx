@@ -85,3 +85,15 @@
 
      **** RN ****
       O usuario deve esta logado na aplicação
+
+    # Recuperar a senha
+
+      ** RF ** 
+      - Deve ser possível o usuario recuperar a senha informando o e-mail
+      - O usuário dever receber um email com o passo a passo para a recuperação da senha
+      - O usuário dever conseguir inserir uma nova senha
+      
+      ** RN **
+
+      - O usuário precisa informar uma nova senha
+      - O link enviado para a recuperação deve expirar em 3 horas
