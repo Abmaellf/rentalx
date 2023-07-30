@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { v4 as uuidV4 } from "uuid";
+import { resolve } from "path";
 import { UsersTokensRepository } from "@modules/accounts/infra/typeorm/repositories/UsersTokensRepository";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
@@ -19,9 +20,19 @@ import { IMailProvider } from "@shared/container/provider/MailProvider/IMailProv
       @inject("EtherealMailProvider")
       private mailProvider: IMailProvider
     ){} 
+    
 
     async execute(email: string): Promise<void> {
       const user = await this.usersRepository.findByEmail(email);
+
+      const templatePath = resolve(
+        __dirname, 
+        "..",
+        "..",
+        "views",
+        "emails",
+        "forgotPassword.hbs"
+      );
 
       if(!user){
         throw new AppError("Users does not exists! ")
@@ -36,12 +47,17 @@ import { IMailProvider } from "@shared/container/provider/MailProvider/IMailProv
         expires_date
       });
 
+      const variables = {
+        name: user.name,
+        link:  `${process.env.FORGOT_MAIL_URL}${token}`,
+      }
+
       await this.mailProvider.sendMail(
-        email,
+         email,
         "Recuperação de senha",
-        `Link para o reset é ${token}`
+        variables,
+        templatePath
       );
     }
-
   }
   export { SendForgotPasswordMailUseCase };
