@@ -41,7 +41,7 @@ import fs from "fs"
 
       const message = await this.client.sendMail({
         to,
-        from: "Rentx <abmael@rentx.com.br",
+        from: "Rentx <abmael@hotmail.com.br",
         subject,
         html: templateHtml,
       });

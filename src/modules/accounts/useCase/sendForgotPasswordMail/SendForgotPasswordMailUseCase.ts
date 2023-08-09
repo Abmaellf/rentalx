@@ -7,6 +7,7 @@ import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTok
 import { AppError } from "@shared/errors/AppError";
 import { IDateProvider } from "@shared/container/provider/DateProvider/IDateProvider";
 import { IMailProvider } from "@shared/container/provider/MailProvider/IMailProvider";
+import 'dotenv/config'
 
 @injectable()
   class SendForgotPasswordMailUseCase {
@@ -21,7 +22,6 @@ import { IMailProvider } from "@shared/container/provider/MailProvider/IMailProv
       private mailProvider: IMailProvider
     ){} 
     
-
     async execute(email: string): Promise<void> {
       const user = await this.usersRepository.findByEmail(email);
 
@@ -49,8 +49,8 @@ import { IMailProvider } from "@shared/container/provider/MailProvider/IMailProv
 
       const variables = {
         name: user.name,
-        link:  `${process.env.FORGOT_MAIL_URL}${token}`,
-      }
+        link: `${process.env.FORGOT_MAIL_URL}${token}`,
+      };
 
       await this.mailProvider.sendMail(
          email,

@@ -33,6 +33,7 @@ class UsersRepository implements IUsersRepository {
     }
 
     async findById(id: string): Promise<User> {
+        //findOneBy é identico ao do doctrine(sf PHP)
         const user = await this.repository.findOneBy({id});
         return user;
     }

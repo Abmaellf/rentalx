@@ -9,7 +9,6 @@ import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTok
 import auth from "@config/auth";
 import { IDateProvider } from "@shared/container/provider/DateProvider/IDateProvider";
 
-
 /* eslint-disable prettier/prettier */ 
 interface IRequest {
     email: string;
@@ -39,8 +38,9 @@ class AuthenticateUserUseCase {
 
   async execute({email, password}: IRequest): Promise<IResponse> {
       // Usuario existe
+     
       const user = await this.userRepository.findByEmail(email);
-
+           
       const { 
         expires_in_token,
         secret_refresh_token, 
@@ -52,7 +52,7 @@ class AuthenticateUserUseCase {
       if(!user){
         throw new AppError("Email or password incorrect")
       }
-      
+   
       // Senha esta correta
       const passwordMath = await compare(password, user.password);
      
@@ -65,7 +65,6 @@ class AuthenticateUserUseCase {
         expiresIn: expires_in_token
       });
       
-
       const refresh_token = sign({ email }, secret_refresh_token,{
         subject: user.id,
         expiresIn: expires_in_refresh_token
@@ -74,7 +73,6 @@ class AuthenticateUserUseCase {
       const refresh_token_expires_date = this.dateProvider.addDays(
         expires_refresh_token_days
       );
-
 
        await this.usersTokensRepository.create({
         expires_date: refresh_token_expires_date,

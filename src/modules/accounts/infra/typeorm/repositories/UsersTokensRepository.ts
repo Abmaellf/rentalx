@@ -5,12 +5,13 @@ import { Repository } from "typeorm";
 import { dataSource } from "@shared/infra/typeorm/dataSource";
 
 class UsersTokensRepository implements IUsersTokensRepository {
+
   private repository: Repository<UserTokens>
 
-  constructor(){
+  constructor() {
       this.repository = dataSource.getRepository(UserTokens) 
   }
-   
+  
   async create({
      expires_date,
      refresh_token, 
@@ -40,5 +41,11 @@ class UsersTokensRepository implements IUsersTokensRepository {
     await this.repository.delete(id);
   }
 
+  async findByRefreshToken(refresh_token: string): Promise<UserTokens> {
+
+    const userToken = await this.repository.findOneBy({ refresh_token})
+
+    return userToken;
+  }
 }
 export { UsersTokensRepository };
