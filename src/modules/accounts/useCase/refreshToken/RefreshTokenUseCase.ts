@@ -39,6 +39,8 @@ class RefreshTokenUseCase {
         auth.expires_refresh_token_days
       );
 
+      //Obs esse create retorna, um userToken, pois eu ajustei na Interface e na implementação
+      //mas aqui não tem variavél recebendo
       await this.usersTokensRepository.create({
         expires_date,
         refresh_token,

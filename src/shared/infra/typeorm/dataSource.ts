@@ -49,7 +49,7 @@ export const dataSource = new DataSource({
 
 
 /* 
-  Modificafo para criar o seed:admin
+  Modificado para criar o seed:admin
 export default async function createConnection(
     host = 'database',
   ): Promise<DataSource> {

@@ -41,6 +41,8 @@ import 'dotenv/config'
       const token = uuidV4();
       const expires_date = this.dateProvider.addHours(3);
 
+      //Obs esse create retorna um userToken, pois eu ajustei na Interface e na implementação
+      //Mas aqui não tem nenhuma variável recebendo o retorno
       await this.usersTokensRepository.create({
         refresh_token: token,
         user_id: user.id,

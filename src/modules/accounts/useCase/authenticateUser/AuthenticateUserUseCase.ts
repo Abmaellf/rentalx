@@ -74,6 +74,7 @@ class AuthenticateUserUseCase {
         expires_refresh_token_days
       );
 
+      //Obs esse create retorna um userToken, pois eu ajustei na Interface e na implementação
        await this.usersTokensRepository.create({
         expires_date: refresh_token_expires_date,
         refresh_token,
