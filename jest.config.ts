@@ -33,19 +33,19 @@ export default {
 
     // Indicates whether the coverage information should be collected while executing the test
 
-    // collectCoverage: false,
+     collectCoverage: true,
 
 
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
 
-    // collectCoverageFrom: undefined,
+     collectCoverageFrom: ["<rootDir>/src/modules/**/useCases/**/*.ts"],
 
 
 
     // The directory where Jest should output its coverage files
 
-    // coverageDirectory: undefined,
+    coverageDirectory: 'coverage',
 
 
 
@@ -67,17 +67,7 @@ export default {
 
     // A list of reporter names that Jest uses when writing coverage reports
 
-    // coverageReporters: [
-
-    //   "json",
-
-    //   "text",
-
-    //   "lcov",
-
-    //   "clover"
-
-    // ],
+    coverageReporters: [ "text-summary", "lcov"],
 
 
 
