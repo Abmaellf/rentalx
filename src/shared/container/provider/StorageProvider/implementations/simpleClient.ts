@@ -8,4 +8,4 @@ const REGION = process.env.AWS_BUCKET_REGION
 const s3Client = new S3Client({ region: REGION });
 s3Client.destroy
 
-export { s3Client };
+export { s3Client }; 

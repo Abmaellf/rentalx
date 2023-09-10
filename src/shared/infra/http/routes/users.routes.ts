@@ -4,7 +4,7 @@ import  multer  from "multer";
 
 import uploadConfig from "../../../../config/upload";
 import { CreateUserController } from "../../../../modules/accounts/useCase/createUser/CreateUserController";
-import { UpdateUserAvaterController } from "../../../../modules/accounts/useCase/updateUserAvatar/UpdateUserAvatarController";
+import { UpdateUserAvatarController } from "../../../../modules/accounts/useCase/updateUserAvatar/UpdateUserAvatarController";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 
 
@@ -13,7 +13,7 @@ import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
   const uploadAvatar =  multer(uploadConfig);
 
   const createUserController = new CreateUserController();
-  const updateUserAvaterController = new UpdateUserAvaterController();
+  const updateUserAvatarController = new UpdateUserAvatarController();
 
   usersRoutes.post("/", createUserController.handler);
 
@@ -21,7 +21,7 @@ import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
     "/avatar",
     ensureAuthenticated,
     uploadAvatar.single("avatar"), 
-    updateUserAvaterController.handler)
+    updateUserAvatarController.handler)
 
 
 export { usersRoutes };

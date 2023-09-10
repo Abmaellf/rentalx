@@ -4,7 +4,7 @@ import { container } from "tsyringe";
 
 import { UpdateUserAvatarUseCase } from "./UpdateUserAvatarUseCase";
 
-class UpdateUserAvaterController {
+class UpdateUserAvatarController {
 
   async handler(request: Request, response: Response):Promise<Response>{
     const { id } = request.user;
@@ -17,4 +17,4 @@ class UpdateUserAvaterController {
     return response.status(204).send();
   }
 }
-export { UpdateUserAvaterController };
+export { UpdateUserAvatarController };
