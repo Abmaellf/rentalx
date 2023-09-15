@@ -6,7 +6,7 @@ import uploadConfig from "../../../../config/upload";
 import { CreateUserController } from "../../../../modules/accounts/useCase/createUser/CreateUserController";
 import { UpdateUserAvatarController } from "../../../../modules/accounts/useCase/updateUserAvatar/UpdateUserAvatarController";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
-
+import { ProfileUserController } from "@modules/accounts/useCase/profileUserUseCase/ProfileUserController";
 
   const usersRoutes = Router();
 
@@ -14,6 +14,7 @@ import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
 
   const createUserController = new CreateUserController();
   const updateUserAvatarController = new UpdateUserAvatarController();
+  const profileUsersController = new ProfileUserController();
 
   usersRoutes.post("/", createUserController.handler);
 
@@ -21,8 +22,14 @@ import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
     "/avatar",
     ensureAuthenticated,
     uploadAvatar.single("avatar"), 
-    updateUserAvatarController.handler)
+    updateUserAvatarController.handler
+  );
 
+  usersRoutes.get(
+    "/profile", 
+    ensureAuthenticated, 
+    profileUsersController.handler 
+  )
 
 export { usersRoutes };
 

@@ -89,6 +89,12 @@ export interface Options {
      */
     comment?: string;
     /**
+     * Restrict the definition of comments to a full line. Comment characters
+     * defined in the middle of the line are not interpreted as such. The
+     * option require the activation of comments.
+     */
+    comment_no_infix?: boolean;
+    /**
      * Set the field delimiter. One character only, defaults to comma.
      */
     delimiter?: string | string[] | Buffer;
@@ -234,6 +240,10 @@ export interface Info {
      * Number of non uniform records when `relax_column_count` is true.
      */
     readonly invalid_field_length: number;
+    /**
+     * Normalized verion of `options.columns` when `options.columns` is true, boolean otherwise.
+     */
+    readonly columns: boolean | { name: string }[] | { disabled: true }[];
 }
 
 export type CsvErrorCode = 

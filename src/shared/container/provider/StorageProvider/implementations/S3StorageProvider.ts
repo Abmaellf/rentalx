@@ -22,7 +22,7 @@ require('dotenv').config()
 
       const params = {
         Bucket: 'abmael-api-rentx',
-        Key: 'avatar/'+file,
+        Key: folder+'/'+file,
         ACL: "public-read", 
         Body: fileContent,
         ContentType

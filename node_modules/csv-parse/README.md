@@ -1,7 +1,7 @@
 
 # CSV parser for Node.js and the web
 
-[![Build Status](https://img.shields.io/github/workflow/status/adaltas/node-csv/Node.js)](https://github.com/adaltas/node-csv/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/adaltas/node-csv/nodejs.yml?branch=master)](https://github.com/adaltas/node-csv/actions)
 [![NPM](https://img.shields.io/npm/dm/csv-parse)](https://www.npmjs.com/package/csv-parse)
 [![NPM](https://img.shields.io/npm/v/csv-parse)](https://www.npmjs.com/package/csv-parse)
  
@@ -34,7 +34,7 @@ It implements the Node.js [`stream.Transform` API](http://nodejs.org/api/stream.
 
 ## Usage
 
-Run `npm install csv` to install the full csv module or run `npm install csv-parse` if you are only interested by the CSV parser.
+Run `npm install csv` to install the full CSV module or run `npm install csv-parse` if you are only interested by the CSV parser.
 
 Use the callback and sync APIs for simplicity or the stream based API for scalability.
 
