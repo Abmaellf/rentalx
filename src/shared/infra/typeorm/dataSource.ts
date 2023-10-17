@@ -19,14 +19,18 @@ import { CreateRentals1676516096845 } from "./migrations/CreateRentals";
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { CreateUsersToken1679858798792 } from "./migrations/CreateUsersToken";
 import { UserTokens } from "@modules/accounts/infra/typeorm/entities/UserTokens";
+require('dotenv').config()
 
 export const dataSource = new DataSource({
   type:"postgres",
   host:"localhost",
   port:5432,
-  username:"docker",
-  password: "database_ignite",
-  database:"rentx",
+  // username:"docker",
+  username: process.env.USERNAME,
+  // password: "database_ignite",
+  password: process.env.PASSWORD,
+  // database:"rentx",
+  database:process.env.DATABASE,
   entities:[Category, Specification, User, Car, CarImage, Rental, UserTokens],
   // eslint-disable-next-line spaced-comment
   //migrations:["./src/database/migrations/*.ts"],

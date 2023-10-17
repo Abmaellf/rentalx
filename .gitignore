@@ -5,3 +5,5 @@
 yarn-error.log
 node_modules/
 dist/
+tmp/*
+!tmp/.gitkeep
