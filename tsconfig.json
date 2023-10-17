@@ -1,32 +1,53 @@
 {
-   "compilerOptions": {
-        "target": "es2016",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "module": "commonjs",
-        "rootDir": "./",  
-        "baseUrl": "./src",
-        "paths": {
-            "@modules/*": [
-                "modules/*"
-            ],
-            "@config/*": [
-                "config/*"
-            ],
-            "@shared/*": [
-                "shared/*"
-            ],
-            "@errors/*": [
-                "errors/*"
-            ],
-            "@utils/*": [
-                "utils/*"
-            ]
-        },
-        "resolveJsonModule": true,
-        "outDir": "./dist",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "skipLibCheck": true
-    }
-}
+    "compilerOptions": {
+      "target": "es5",
+      "module": "commonjs",
+      "lib": [
+        "es6"
+      ],
+      "allowJs": true,
+      "outDir": "build",
+      "rootDir": "src",
+      "strict": true,
+      "noImplicitAny": true,
+      "strictPropertyInitialization": false,
+      "baseUrl": "./",
+      "paths": {
+        "@config/*": [
+          "src/config/*"
+        ],
+        "@modules/*": [
+          "src/modules/*"
+        ],
+        "@shared/*": [
+          "src/shared/*"
+        ],
+        "@errors/*": [
+          "src/errors/*"
+        ],
+        "@utils/*": [
+          "src/utils/*"
+        ],
+      },
+      "typeRoots": [
+        "@types",
+        "./node_modules/@types"
+      ],
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "resolveJsonModule": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true
+    },
+    "exclude": [
+      "node_modules",
+      "babel.config.js",
+      "dist",
+      "vite.config.ts",
+      "coverage",
+      "document",
+      "vite-e2e.config.ts",
+      "jest.config.ts"
+    ],
+  }
