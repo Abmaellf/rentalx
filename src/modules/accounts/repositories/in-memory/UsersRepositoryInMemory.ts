@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable import-helpers/order-imports */
 /* eslint-disable prettier/prettier */
+import { AppError } from "@shared/errors/AppError";
 import { ICreateUserDTO } from "../../dto/ICreateUserDTO";
 
 import { User } from "../../infra/typeorm/entities/User";
@@ -22,13 +23,24 @@ class UsersRepositoryInMemory implements IUsersRepository {
 
     async findByEmail(email: string): Promise<User> {
 
-       return this.users.find((user)=> user.email === email);
+      const user = this.users.find((user)=> user.email === email);
+      
+    if(!user){
+      throw new AppError("users_tokens already not exists");
+    }
+      return user;
 
     }
 
-   async  findById(id: string): Promise<User> {
+    async findById(id: string): Promise<User> {
 
-      return this.users.find((user)=> user.id === id);
+       const user = this.users.find((user)=> user.id === id);
+
+      
+    if(!user){
+      throw new AppError("users already not exists");
+    }
+      return user;
     }
 
 }

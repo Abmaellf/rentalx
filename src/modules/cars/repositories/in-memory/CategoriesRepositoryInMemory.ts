@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { AppError } from "@shared/errors/AppError";
 import { Category } from "../../infra/typeorm/entities/Category";
 import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
@@ -8,6 +9,10 @@ class CategoriesRepositoyInMemory implements ICategoriesRepository {
 
   async findByName(name: string): Promise<Category> {
     const category = this.categories.find((category)=>category.name === name);
+    if(!category){
+      throw new AppError("category already not exists");
+    }	
+	
     return category;
   }
 

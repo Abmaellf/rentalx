@@ -5,6 +5,7 @@ import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepositor
 import { dataSource } from "@shared/infra/typeorm/dataSource";
 
 import { User } from "../entities/User";
+import { AppError } from "@shared/errors/AppError";
 
 class UsersRepository implements IUsersRepository {
 
@@ -28,14 +29,24 @@ class UsersRepository implements IUsersRepository {
     }
 
     async findByEmail(email: string): Promise<User> {
-        const user = await this.repository.findOneBy({email});
+         const user = await this.repository.findOneBy({email});
+
+         
+    if(!user){
+      throw new AppError("users already not exists");
+    }
         return user;
     }
 
     async findById(id: string): Promise<User> {
-        //findOneBy é identico ao do doctrine(sf PHP)
+      
         const user = await this.repository.findOneBy({id});
-        return user;
+
+
+    if(!user){
+      throw new AppError("users already not exists");
+    }
+      return user;
     }
 
 } export{ UsersRepository};

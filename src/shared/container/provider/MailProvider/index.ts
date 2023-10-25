@@ -2,14 +2,15 @@ import { container } from "tsyringe";
 import { IMailProvider } from "./IMailProvider";
 import { EtherealMailProvider } from "./implementations/EtherealMailProvider";
 import { SESMailProvider } from "./implementations/SESMailProvider";
+import { env } from 'node:process';
 
-require('dotenv').config()
+// require('dotenv').config()
 
-const mailProvider = {
+ const mailProvider = {
   ethereal: container.resolve(EtherealMailProvider),
   ses: container.resolve(SESMailProvider)
 }
 
 container.registerInstance<IMailProvider>(
-  "MailProvider", mailProvider[process.env.MAIL_PROVIDER]
+  "MailProvider",   mailProvider[env.MAIL_PROVIDER]
 );

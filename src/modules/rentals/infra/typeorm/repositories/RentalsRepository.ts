@@ -3,6 +3,7 @@ import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsReposi
 import { Rental } from "../entities/Rental";
 import { dataSource } from "@shared/infra/typeorm/dataSource";
 import { Repository } from "typeorm";
+import { AppError } from "@shared/errors/AppError";
 
   class RentalsRepository implements IRentalsRepository {
 
@@ -29,6 +30,10 @@ async findOpenRentalByCar(car_id: string): Promise<Rental> {
 
   const rental = await rentalQuery.getOne();
 
+  if(!rental){
+    throw new AppError("users_tokens already not exists");
+  }	
+
   return rental;  
 }
 /*
@@ -44,7 +49,9 @@ async findOpenRentalByUser(user_id: string): Promise<Rental> {
       .andWhere("r.user_id = :user_id", { user_id });
 
   const rental = await rentalQuery.getOne();
-
+  if(!rental){
+    throw new AppError("users_tokens already not exists");
+  }
   return rental;
 }
 
@@ -71,6 +78,9 @@ async findOpenRentalByUser(user_id: string): Promise<Rental> {
 
     async findById(id: string): Promise<Rental> {
         const rental = await this.repository.findOneBy({id});
+        if(!rental){
+          throw new AppError("users_tokens already not exists");
+        }
         return rental;
     }
 

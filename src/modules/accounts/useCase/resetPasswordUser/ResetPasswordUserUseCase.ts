@@ -22,7 +22,7 @@ class ResetPasswordUserUseCase {
     private usersRepository: IUsersRepository
   ){}
 
-  async execute({ token, password}): Promise<void> {
+  async execute({ token, password}:IRequest): Promise<void> {
       const userToken =  await this.usersTokensRepository.findByRefreshToken(
         token
       );

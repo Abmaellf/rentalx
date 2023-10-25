@@ -5,6 +5,7 @@ import { ICreateSpecificationDTO, ISpecificationsRepository } from "@modules/car
 import { dataSource } from "@shared/infra/typeorm/dataSource";
 
 import { Specification } from "../entities/Specification";
+import { AppError } from "@shared/errors/AppError";
 
 
 
@@ -33,6 +34,11 @@ class SpecificationsRepository implements ISpecificationsRepository {
         const specification = await this.repository.findOneBy({
             name
         });
+
+        if(!specification){
+            throw new AppError("users_tokens already not exists");
+          }	
+          
         return specification;
     }
 

@@ -3,6 +3,7 @@ import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTok
 import { UserTokens } from "../entities/UserTokens";
 import { Repository } from "typeorm";
 import { dataSource } from "@shared/infra/typeorm/dataSource";
+import { AppError } from "@shared/errors/AppError";
 
 class UsersTokensRepository implements IUsersTokensRepository {
 
@@ -34,6 +35,10 @@ class UsersTokensRepository implements IUsersTokensRepository {
 
     });
 
+    if(!users_tokens){
+      throw new AppError("users_tokens already not exists");
+    }
+
     return users_tokens;
     
   }
@@ -46,6 +51,10 @@ class UsersTokensRepository implements IUsersTokensRepository {
 
     const userToken = await this.repository.findOneBy({ refresh_token})
 
+    
+    if(!userToken){
+      throw new AppError("users_tokens already not exists");
+    }
     return userToken;
   }
 }

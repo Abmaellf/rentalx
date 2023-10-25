@@ -55,7 +55,7 @@ describe("Create car Specifications", ()=>{
     const car_id = car.id
     
    
-    const specifications_id = [specification.id]
+    const specifications_id = [specification.name]  //Alterado de id para name
 
     const specificationsCars = await createCarSpecificationUseCase.execute({ 
       car_id,

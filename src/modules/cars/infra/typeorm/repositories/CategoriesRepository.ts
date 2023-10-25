@@ -7,6 +7,7 @@ import {
 import { dataSource } from "@shared/infra/typeorm/dataSource";
 
 import { Category } from "../entities/Category";
+import { AppError } from "@shared/errors/AppError";
 
 class CategoriesRepository implements ICategoriesRepository {
     private repository: Repository<Category>;
@@ -18,6 +19,10 @@ class CategoriesRepository implements ICategoriesRepository {
 
     async findByName(name: string): Promise<Category> {
         const category = await this.repository.findOneBy({ name });
+
+        if(!category){
+            throw new AppError("car already not exists");
+          }	
 
         return category;
     }

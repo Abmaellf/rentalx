@@ -6,6 +6,7 @@ import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { dataSource } from "@shared/infra/typeorm/dataSource";
 
 import { Car } from "../entities/Car";
+import { AppError } from "@shared/errors/AppError";
 
 class CarsRepository implements ICarsRepository {
   
@@ -50,6 +51,10 @@ class CarsRepository implements ICarsRepository {
     const car = await this.repository.findOneBy({
       license_plate
     });
+    if(!car){
+      throw new AppError("car already not exists");
+    }	
+	
     return car;
   }
 
@@ -80,6 +85,10 @@ class CarsRepository implements ICarsRepository {
 
   async findById(id: string): Promise<Car> {
     const car = await this.repository.findOneBy({id});
+
+    if(!car){
+      throw new AppError("car already not exists");
+    }	
     return car;
   }
 

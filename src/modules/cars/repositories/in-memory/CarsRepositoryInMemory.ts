@@ -3,6 +3,7 @@ import { ICreateCarDTO } from "@modules/cars/dto/ICreateCarDTO";
 import { Car } from "@modules/cars/infra/typeorm/entities/Car";
 
 import { ICarsRepository } from "../ICarsRepository";
+import { AppError } from "@shared/errors/AppError";
 
 class CarsRepositoryInMemory implements ICarsRepository {
   
@@ -36,7 +37,14 @@ class CarsRepositoryInMemory implements ICarsRepository {
   }
 
   async findByLicensePlate(license_plate: string): Promise<Car> {
-    return  this.cars.find((car) => car.license_plate === license_plate);
+
+    const car = this.cars.find((car) => car.license_plate === license_plate);
+
+    if(!car){
+      throw new AppError("car already not exists");
+    }	
+	
+    return car;
     
   }
 
@@ -63,8 +71,11 @@ class CarsRepositoryInMemory implements ICarsRepository {
   } 
   
   async findById(id: string): Promise<Car> {
-    return this.cars.find((car)=> car.id === id
-    );
+    const car = this.cars.find((car)=> car.id === id);
+    if(!car){
+      throw new AppError("car already not exists");
+    }	
+    return car;
   }
 
 
