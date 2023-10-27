@@ -25,10 +25,10 @@ export const dataSource = new DataSource({
   type:"postgres",
   host:"localhost",
   port:5432,
-  // username:"docker",
-  username: process.env.USERNAME,
-  // password: "database_ignite",
-  password: process.env.PASSWORD,
+  username:"docker",
+  //username: process.env.USERNAME,
+  password: "database_ignite",
+  //password: process.env.PASSWORD,
   // database:"rentx",
   database:process.env.DATABASE,
   entities:[Category, Specification, User, Car, CarImage, Rental, UserTokens],
@@ -65,11 +65,12 @@ export default async function createConnection(
 // Não modificado
      // export default 
 
-     export function createConnection( host = 'database', ): Promise<DataSource> {
+    //  export function createConnection( host = 'database', ): Promise<DataSource> {
+      export function createConnection(): Promise<DataSource> {
 
         return dataSource
           .setOptions({
-                        host: process.env.NODE_ENV === "test" ? "localhost" : host,
+                        // host: process.env.NODE_ENV === "test" ? "localhost" : host,
                         database: process.env.NODE_ENV === 'test' ? "rentx_test": 
                         dataSource.options.database as string,
                     })
