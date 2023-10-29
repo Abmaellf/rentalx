@@ -28,7 +28,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
     - run: yarn
-    - run: yarn build --if-present
+    - run: yarn build
     - run: yarn test
     - uses: appleboy/scp-action@v0.1.4
       with:
