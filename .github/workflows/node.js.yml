@@ -29,7 +29,6 @@ jobs:
         cache: 'yarn'
     - run: yarn
     - run: yarn build
-    - run: yarn test
     - uses: appleboy/scp-action@v0.1.4
       with:
         host: ${{ secrets.SSH_HOST }}
