@@ -6,12 +6,8 @@ name: Node.js CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -19,8 +15,7 @@ jobs:
         node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
-    steps:
-    
+    steps:    
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
@@ -34,7 +29,7 @@ jobs:
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
-        password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.SSH_PORT }}
+        key: ${{ secrets.SSH_KEY }}
         source: "., !node_modules"
         target: "test"
