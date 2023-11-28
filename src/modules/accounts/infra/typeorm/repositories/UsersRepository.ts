@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable import/order */
+/* eslint-disable import-helpers/order-imports */
 import { Repository } from "typeorm";
 
 import { ICreateUserDTO } from "@modules/accounts/dto/ICreateUserDTO";
@@ -31,11 +34,7 @@ class UsersRepository implements IUsersRepository {
     async findByEmail(email: string): Promise<User> {
          const user = await this.repository.findOneBy({email});
 
-         
-    if(!user){
-      throw new AppError("users already not exists");
-    }
-        return user;
+         return user;
     }
 
     async findById(id: string): Promise<User> {

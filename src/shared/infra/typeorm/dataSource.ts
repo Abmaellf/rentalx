@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable import/order */
+/* eslint-disable import-helpers/order-imports */
+/* eslint-disable prettier/prettier */
 import { DataSource } from "typeorm";
 import { User } from "@modules/accounts/infra/typeorm/entities/User";
 import { Car } from "@modules/cars/infra/typeorm/entities/Car";
@@ -16,15 +20,16 @@ import { CreateRentals1676516096845 } from "./migrations/CreateRentals";
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { CreateUsersToken1679858798792 } from "./migrations/CreateUsersToken";
 import { UserTokens } from "@modules/accounts/infra/typeorm/entities/UserTokens";
+
 require('dotenv').config()
 
 export const dataSource = new DataSource({
   type:"postgres",
   host:"localhost",
-  port:5432,
-  username:"docker",
-  password: "database_ignite",
-  database:process.env.DATABASE,
+  port:65432,
+  username: process.env.USER_DATABASE,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
   entities:[Category, Specification, User, Car, CarImage, Rental, UserTokens],
   migrations:[
               CreateCategories1671248307194, 

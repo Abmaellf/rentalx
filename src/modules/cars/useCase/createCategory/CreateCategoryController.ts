@@ -1,3 +1,6 @@
+/* eslint-disable spaced-comment */
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Response, Request } from "express";
 import { container } from "tsyringe";
 
