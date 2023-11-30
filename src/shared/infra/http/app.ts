@@ -1,18 +1,23 @@
 import express, { NextFunction, Request, Response } from "express";
+
 import "express-async-errors";
-import swaggerFile from "../../../../src/swagger.json"
+
 import swaggerUi from "swagger-ui-express";
 
 import { AppError } from "@shared/errors/AppError";
+
 import "reflect-metadata";
 
 import "@shared/container";
-import { router } from "./routes";
+
 import upload from "@config/upload";
+import cors from "cors";
+
+import swaggerFile from "../../../../src/swagger.json"
+
+import { router } from "./routes";
 
 const app = express();
-
-
 
 app.use(express.json());
 
@@ -20,6 +25,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use("/avatar", express.static(`${upload.tmpFolder}/avatar`))
 
+app.use(cors());
 app.use(router);
 app.use(
     (err: Error, request: Request, response: Response, next: NextFunction) => {
@@ -35,4 +41,4 @@ app.use(
     }
 );
 
-export { app};
+export { app };
