@@ -1,23 +1,25 @@
-import express, { NextFunction, Request, Response } from "express";
-
+/* eslint-disable import/no-useless-path-segments */
+/* eslint-disable import-helpers/order-imports */
 import "express-async-errors";
+import "reflect-metadata";
 
+import express, { NextFunction, Request, Response } from "express";
 import swaggerUi from "swagger-ui-express";
 
 import { AppError } from "@shared/errors/AppError";
-
-import "reflect-metadata";
 
 import "@shared/container";
 
 import upload from "@config/upload";
 import cors from "cors";
 
-import swaggerFile from "../../../../src/swagger.json"
+import swaggerFile from "../../../../src/swagger.json";
 
 import { router } from "./routes";
+import { rateLimitMiddleware } from "./middlewares/rateLimiter";
 
 const app = express();
+app.use(rateLimitMiddleware);
 
 app.use(express.json());
 
